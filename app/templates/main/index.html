@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block styles %}
+{{ super() }}
+<link href="{{ url_for('static',filename='css/plugins/select2/select2.min.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="search-form" >
+                    <form action="" role="form" method="post" name="query" >
+                        {{ form.hidden_tag() }}
+                        <div class="input-group">
+                            <span class="input-group-btn" >
+                                <button type="button" class="btn btn-primary" style="border-top-left-radius:17px;border-top-right-radius:0px;border-bottom-left-radius:17px;border-bottom-right-radius:0px;"> <i class="fa fa-search"></i> </button>
+                            </span>
+                            {{ form.mould(placeholder="Select Mould",class="select_mould form-control",style="width:240px;") }}
+                            {{ form.material(placeholder="Select Material",class="select_material form-control",style="width:160px;") }}
+                            {{ form.spec(size=64,placeholder="Enter like 820x800x255",class="form-control",style="width:440px;") }}
+                            <button class="btn btn-primary" type="submit" style="border-top-left-radius:0px;border-top-right-radius:17px;border-bottom-left-radius:0px;border-bottom-right-radius:17px;">
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <small> Serarch Result {{ data.result_count }} Request time  ({{ data.result_time }} seconds) 
+                    {% for error in form.mould.errors %}<span style="color:#f00" >[{{ error }}]</span>{% endfor %}
+                    {% for error in form.material.errors %}<span style="color:#f00" >[{{ error }}]</span>{% endfor %}
+                    {% for error in form.spec.errors %}<span style="color:#f00" >[{{ error }}]</span>{% endfor %}
+                </small>
+                {% if data.parts %}
+                {% for part in data.parts %}
+                <div class="hr-line-dashed"></div>
+                <div class="search-result" >
+                    <a href="#">Hours:{{ part.working_hours }}(h),SPEC:{{ part.parts_length}}x{{ part.parts_width }}x{{ part.parts_height }}(mm),Material:{{ part.material.material_name }}</a><br />
+                    <a href="#" class="search-link">{{ part.mould.mould_name}}-{{ part.mould.mould_code }} -- {{ part.parts_name }} 
+                    </a>
+                    <p>
+                    Mould Name:{{ part.mould.mould_name}},Mould Code:{{ part.mould.mould_code }},Parts:{{ part.parts_name }},Material:{{ part.material.material_name }},Quantity:{{ part.quantity }},SPEC:{{ part.parts_length}}x{{ part.parts_width }}x{{ part.parts_height }},Note:{{ part.note }}
+                    </p>
+                </div>
+                {% endfor %}
+                {% else %}
+
+                <div class="search-result" style="margin-top:20px;">
+                    <span class="search-link">No data Searched.</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<script>
+    $(document).ready(function(){
+//        empty_mould_option = new Option("Select Mould",0);
+//        $(".select_mould")[0].options.add(empty_mould_option);
+//        empty_mould_option.selected = true;
+
+//       empty_material_option = new Option("Select Material",0);
+//        $(".select_material")[0].options.add(empty_material_option);
+//        empty_material_option.selected = true; 
+    });
+</script>
+{% endblock %}

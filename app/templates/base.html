@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+            {% block metas %}
+                <!--S-meta-->
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+                <meta name="keywords" content="keyword,keyword,keyword,keyword,keyword" />
+                <meta name="description" itemprop="description" content="page description"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <!--E-meta-->
+            {% endblock %}
+            {% block icon %}
+                <!--S-icon--> 
+                <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+                <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+                <!--E-icon-->
+            {% endblock %}
+            <title>
+            {% block title %}Estimate{% endblock %}
+            </title>
+            {% block styles %}
+                <!--S-css-->
+                <link href="/static/css/bootstrap.min.css" rel="stylesheet"> 
+                <link href="/static/font-awesome/css/font-awesome.css" rel="stylesheet">
+                <link href="/static/css/animate.css" rel="stylesheet">
+                <link href="/static/css/style.css" rel="stylesheet">
+                <!--E-css-->
+            {% endblock %}
+            {% block scripts %}
+                <!--S-javascript-->
+                <script src="/static/js/jquery-2.1.1.js"></script>
+                <script src="/static/js/bootstrap.min.js"></script> 
+                <!--E-javascript-->
+            {% endblock %}
+        {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div id="wrapper">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="/"><i class="fa fa-home"></i> </a>
+                </div>
+                <span style="font-size:24px;line-height:60px;">Estimate System</span>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to Estimate something worktime.</span>
+                    </li>
+                    <li>
+                    <a class="right-sidebar-toggle" href="/admin">
+                        <i class="fa fa-tasks"></i>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        {% block page_content %}{% endblock %}
+        <div class="footer">
+            <div class="pull-right">Power by <strong>Flask</strong>.</div>
+            <div><strong>Copyright </strong> Janl's studio &copy; 2016 </div>
+        </div> 
+        {% endblock %}
+    <div>
+</body>
+</html>
