@@ -42,15 +42,15 @@ def query_parts_data(mould_id,material_id,length,width,height):
     elif material_id > 0 and mould_id == 0:
         return Part.query.\
             order_by(func.abs(length - Part.parts_length) + func.abs(width - Part.parts_width) + func.abs(height - Part.parts_height)).\
-            limit(10).filter(Part.material_id == material_id).all()
+            filter(Part.material_id == material_id).limit(10).all()
     elif material_id == 0 and mould_id > 0:
         return Part.query.\
             order_by(func.abs(length - Part.parts_length) + func.abs(width - Part.parts_width) + func.abs(height - Part.parts_height)).\
-            limit(10).filter(Part.mould_id == mould_id).all()
+            filter(Part.mould_id == mould_id).limit(10).all()
     elif material_id > 0 and mould_id > 0:
         return Part.query.\
             order_by(func.abs(length - Part.parts_length) + func.abs(width - Part.parts_width) + func.abs(height - Part.parts_height)).\
-            limit(10).filter(Part.mould_id == mould_id,Part.material_id == material_id).all()
+            filter(Part.mould_id == mould_id,Part.material_id == material_id).limit(10).all()
 
 
 
