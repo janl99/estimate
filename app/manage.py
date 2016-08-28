@@ -24,12 +24,6 @@ manager.add_command("runserver", Server(
     port = 5000)
 )
 
-manager.add_command("run", Server(
-    use_debugger = True,
-    use_reloader = True,
-    host = '192.168.2.100',
-    port = 8000)
-)
 
 
 
