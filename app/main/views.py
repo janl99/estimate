@@ -76,9 +76,9 @@ def index():
         if form.spec.data:
             spec = str(form.spec.data)
 
-        length = spec.split('x')[0]
-        width = spec.split('x')[1]
-        height = spec.split('x')[2]
+        length = spec.split('*')[0]
+        width = spec.split('*')[1]
+        height = spec.split('*')[2]
         print mould_id
         print material_id
         print length
